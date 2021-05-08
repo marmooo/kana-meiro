@@ -1,8 +1,8 @@
-var CACHE_NAME = '2020-11-23 11:10';
+var CACHE_NAME = '2021-05-09 08:00';
 var urlsToCache = [
   '/kana-meiro/',
   '/kana-meiro/index.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css',
+  'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css',
 ];
 
 self.addEventListener('install', function(event) {
