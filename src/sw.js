@@ -1,7 +1,10 @@
-var CACHE_NAME = '2021-05-11 18:55';
+var CACHE_NAME = '2021-05-18 09:10';
 var urlsToCache = [
   '/kana-meiro/',
   '/kana-meiro/index.js',
+  '/kana-meiro/mp3/incorrect1.mp3',
+  '/kana-meiro/mp3/cat.mp3',
+  '/kana-meiro/mp3/correct3.mp3',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css',
 ];
 
