@@ -2,6 +2,7 @@ var CACHE_NAME = '2021-09-12 08:36';
 var urlsToCache = [
   "/kana-meiro/",
   "/kana-meiro/index.js",
+  "/kana-meiro/words.lst",
   "/kana-meiro/mp3/incorrect1.mp3",
   "/kana-meiro/mp3/cat.mp3",
   "/kana-meiro/mp3/correct3.mp3",
