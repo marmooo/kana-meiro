@@ -121,7 +121,6 @@ function showAnswer() {
   }
   const startButton = document.getElementById("startButton");
   startButton.classList.remove("d-none");
-  startButton.textContent = "スタート";
   const answerButton = document.getElementById("answerButton");
   answerButton.classList.add("d-none");
 }
@@ -234,7 +233,6 @@ function startGame() {
   strictSolution();
   const startButton = document.getElementById("startButton");
   startButton.classList.add("d-none");
-  startButton.textContent = "やり直し";
   const answerButton = document.getElementById("answerButton");
   answerButton.classList.remove("d-none");
   prevPos = 1;
