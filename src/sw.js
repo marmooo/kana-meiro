@@ -1,4 +1,4 @@
-var CACHE_NAME = '2021-10-15 20:33';
+var CACHE_NAME = '2021-10-17 13:42';
 var urlsToCache = [
   "/kana-meiro/",
   "/kana-meiro/index.js",
@@ -7,7 +7,7 @@ var urlsToCache = [
   "/kana-meiro/mp3/cat.mp3",
   "/kana-meiro/mp3/correct3.mp3",
   "/kana-meiro/favicon/favicon-48x48.png",
-  "https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css",
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css",
 ];
 
 self.addEventListener("install", function (event) {
