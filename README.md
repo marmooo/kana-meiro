@@ -1,10 +1,10 @@
 # カタカナ迷路
 
-[迷路で楽しく勉強できるカタカナゲーム](https://marmooo.github.io/kanji-meiro/)です。
+[迷路で楽しく勉強できるカタカナゲーム](https://marmooo.github.io/kana-meiro/)です。
 
 ## Installation
 
-install [marmooo/ngram-idioms](https://github.com/marmooo/ngram-idioms)
+install [marmooo/graded-vocab-ja](https://github.com/marmooo/graded-vocab-ja) licensed under the CC-BY 4.0
 
 ## Build
 
