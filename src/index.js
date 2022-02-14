@@ -560,15 +560,19 @@ window.addEventListener("resize", function () {
   resizeFontSize(meiroObj);
 });
 
-fetch("words.lst").then(response => response.text()).then(text => {
-  text.trim().split("\n").forEach(line => {
-    idioms.push(line);
+fetch("words.lst")
+  .then((response) => response.text())
+  .then((text) => {
+    text.trim().split("\n").forEach((line) => {
+      idioms.push(line);
+    });
+    generateGame();
+    strictSolution();
+    while (solvedPanel.firstChild) {
+      solvedPanel.removeChild(solvedPanel.firstChild);
+    }
+    showAnswer();
   });
-  generateGame();
-  strictSolution();
-  while (solvedPanel.firstChild) solvedPanel.removeChild(solvedPanel.firstChild);
-  showAnswer();
-});
 
 document.getElementById("toggleDarkMode").onclick = toggleDarkMode;
 document.getElementById("startButton").onclick = startGame;
