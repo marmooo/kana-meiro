@@ -1,5 +1,4 @@
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
-const tmpCanvas = document.createElement("canvas");
 const size = 10;
 const meiro = new Array(12);
 let score = 0;
@@ -489,7 +488,7 @@ function meiroClickEvent(obj, currPos) {
 
 function resizeFontSize(node) {
   const meiroSize = document.getElementById("meiroOuter").offsetWidth;
-  const margin = 1.2;  // 小さすぎると overflow で表示が崩れる
+  const margin = 1.2; // 小さすぎると overflow で表示が崩れる
   const padding = remSize * 5;
   const border = 11;
   const fontSize = (meiroSize - padding - border) / 12 / margin;
