@@ -443,8 +443,8 @@ function generateGame() {
         td.textContent = idiomStr[currPos - 1];
       }
       tr.appendChild(td);
-      td.onclick = function () {
-        meiroClickEvent(this, currPos);
+      td.onclick = () => {
+        meiroClickEvent(td, currPos);
       };
     }
   }
