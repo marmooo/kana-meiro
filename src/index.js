@@ -160,18 +160,11 @@ function setNeighborText(trs, x, y, direction, text, isAnswer) {
   }
 }
 
-function generateRandomText(text, isAnswer) {
+function randomizeText(text, isAnswer) {
   if (isAnswer) {
     const first = text[0];
     for (let i = 0; i < 5; i++) { // どうしても熟語ができてしまうケースがあるため回数打ち切り
       text = first + words[getRandomInt(0, words.length)];
-      if (!includeIdiom(text)) return text;
-    }
-  } else {
-    for (let i = 0; i < 5; i++) { // どうしても熟語ができてしまうケースがあるため回数打ち切り
-      for (let j = 0; j < 2; j++) {
-        text[j] = words[getRandomInt(0, words.length)];
-      }
       if (!includeIdiom(text)) return text;
     }
   }
@@ -189,7 +182,7 @@ function includeIdiom(text) {
 function strictNeighbor(trs, x, y, direction, isAnswer) {
   let text = getNeighborText(trs, x, y, direction);
   if (text.length == 2) { // 解答ノードを含まない時
-    text = generateRandomText(text, isAnswer);
+    text = randomizeText(text, isAnswer);
     setNeighborText(trs, x, y, direction, text, isAnswer);
   }
 }
