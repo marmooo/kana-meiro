@@ -460,7 +460,7 @@ function meiroClickEvent(obj, currPos) {
     } else if (currPos - prevPos == 1 && currPos != 0) { // 正解
       prevPos += 1;
       playAudio("correct");
-      obj.onclick = function () {};
+      obj.onclick = null;
       const pos = idiomEnds.findIndex((x) => x == currPos);
       if (pos >= 0) {
         if (isCorrect) {
@@ -489,7 +489,7 @@ function resizeFontSize(node) {
 
 const meiroObj = document.getElementById("meiro");
 resizeFontSize(meiroObj);
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
   resizeFontSize(meiroObj);
 });
 
