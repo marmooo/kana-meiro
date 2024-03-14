@@ -11,7 +11,7 @@ let idioms = [];
 const words =
   "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュー"
     .split("");
-const audioContext = new AudioContext();
+const audioContext = new globalThis.AudioContext();
 const audioBufferCache = {};
 loadAudio("error", "mp3/cat.mp3");
 loadAudio("correct", "mp3/correct3.mp3");
@@ -352,17 +352,6 @@ function paint(x, y, direction, n) {
   }
 }
 
-function _p() {
-  let str = "";
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-      str += meiro[i][j];
-    }
-    str += "\n";
-  }
-  console.log(str);
-}
-
 function checkIdiomEnds() {
   let count = 0;
   idiomEnds = [];
@@ -489,7 +478,7 @@ function resizeFontSize(node) {
 
 const meiroObj = document.getElementById("meiro");
 resizeFontSize(meiroObj);
-window.addEventListener("resize", () => {
+globalThis.addEventListener("resize", () => {
   resizeFontSize(meiroObj);
 });
 
