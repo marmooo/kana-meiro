@@ -1,16 +1,20 @@
+import { createWorker } from "https://cdn.jsdelivr.net/npm/emoji-particle@0.0.4/+esm";
+
 const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
 const size = 10;
 const meiro = new Array(12);
+const emojiParticle = initEmojiParticle();
 let score = 0;
+let consecutiveWins = 0;
 let counter = 0;
 let prevPos = 1;
 let idiomEnds = [];
 let idiomsNum;
 let isCorrect = true;
 let idioms = [];
-const words =
-  "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュー"
-    .split("");
+const words = Array.from(
+  "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュー",
+);
 let audioContext;
 const audioBufferCache = {};
 loadConfig();
@@ -88,6 +92,30 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function initEmojiParticle() {
+  const canvas = document.createElement("canvas");
+  Object.assign(canvas.style, {
+    position: "fixed",
+    pointerEvents: "none",
+    top: "0px",
+    left: "0px",
+  });
+  canvas.width = document.documentElement.clientWidth;
+  canvas.height = document.documentElement.clientHeight;
+  document.body.prepend(canvas);
+
+  const offscreen = canvas.transferControlToOffscreen();
+  const worker = createWorker();
+  worker.postMessage({ type: "init", canvas: offscreen }, [offscreen]);
+
+  globalThis.addEventListener("resize", () => {
+    const width = document.documentElement.clientWidth;
+    const height = document.documentElement.clientHeight;
+    worker.postMessage({ type: "resize", width, height });
+  });
+  return { canvas, offscreen, worker };
 }
 
 function shuffle(array) {
@@ -463,6 +491,7 @@ function generateGame() {
 }
 
 function meiroClickEvent(obj, currPos) {
+  let currScore = 0;
   obj.classList.toggle("table-primary");
   if (obj.classList.contains("table-primary")) {
     if (prevPos == currPos) {
@@ -474,8 +503,20 @@ function meiroClickEvent(obj, currPos) {
       const pos = idiomEnds.findIndex((x) => x == currPos);
       if (pos >= 0) {
         if (isCorrect) {
-          score += idioms[pos].length;
-          document.getElementById("score").textContent = score;
+          consecutiveWins += 1;
+          currScore += idioms[pos].length;
+        } else {
+          consecutiveWins = 1;
+        }
+        for (let i = 0; i < consecutiveWins; i++) {
+          emojiParticle.worker.postMessage({
+            type: "spawn",
+            options: {
+              particleType: "popcorn",
+              originX: Math.random() * emojiParticle.canvas.width,
+              originY: Math.random() * emojiParticle.canvas.height,
+            },
+          });
         }
         prependIdiomLink(idioms[pos], isCorrect);
         isCorrect = true;
@@ -486,6 +527,8 @@ function meiroClickEvent(obj, currPos) {
       isCorrect = false;
     }
   }
+  score += currScore;
+  document.getElementById("score").textContent = score;
 }
 
 function resizeFontSize(node) {
