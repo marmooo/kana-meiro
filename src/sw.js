@@ -1,4 +1,4 @@
-const cacheName = "2025-12-15 00:00";
+const cacheName = "2026-04-03 00:00";
 const urlsToCache = [
   "/kana-meiro/index.js",
   "/kana-meiro/words.lst",
